@@ -1,0 +1,671 @@
+/* ############################## Font Face ##################### */
+@font-face {
+  font-family: "Druk Trial";
+  src: url("../fonts/druk-trial/Druk-Super.woff2") format("woff2") url("../fonts/druk-trial/Druk-Super.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Druk Trial";
+  src: url("../fonts/druk-trial/Druk-Bold.woff2") format("woff2"),
+    url("../fonts/druk-trial/Druk-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Druk Trial";
+  src: url("../fonts/druk-trial/Druk-Medium.woff2") format("woff2"),
+    url("../fonts/druk-trial/Druk-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter/Inter-Regular.woff2") format("woff2"),
+    url("../fonts/inter/Inter-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter/Inter-Black.woff2") format("woff2"),
+    url("../fonts/inter/Inter-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Now Display";
+  src: url("../fonts/helvetica/Helvetica.woff2") format("woff2"),
+    url("../fonts/helvetica/Helvetica.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Typography tokens from Figma */
+  --font-heading: "Druk Trial", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-content: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-label: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Base neutrals */
+  --color-bg-light: #FDFDFD;
+  --color-white: #FFFFFF;
+  --color-text-dark: #1F1F1F;
+  --color-black: #000000;
+
+  /* Brand / accent */
+  --color-accent-gold: #A3783F;
+  --color-bg-deep-olive: #2B2A17;
+  --color-bg-charcoal: #2F2E2E;
+  --color-border-light: #ECECEC;
+  --color-deep-neutral: #141213;
+
+  /* Swatch / utility colors from Figma palette */
+  --color-brown: #A52A2A;
+  --color-red: #FF0000;
+  --color-green: #076627;
+  --color-deep-green: #205F24;
+  --color-gray: #808080;
+  --color-silver: #A0A0A0;
+  --color-purple: #800080;
+  --color-maroon: #811111;
+  --color-sky-blue: #87CEEB;
+  --color-royal-blue: #4169E1;
+  --color-yellow: #FFFF00;
+  --color-navy: #000080;
+  --color-pink: #FFC0CB;
+
+  /* Gradients (exact from Figma fills) */
+  --gradient-hero-light: linear-gradient(141deg, rgba(245, 245, 245, 1) 0%, rgba(210, 210, 210, 1) 100%);
+  --gradient-section-dark: linear-gradient(180deg, rgba(31, 31, 31, 1) 0%, rgba(255, 255, 255, 1) 53%);
+}
+
+/* ############################## global classes start ##################### */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-content);
+}
+
+a {
+  font-family: var(--font-label);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 16px;
+  padding: 0;
+}
+
+.trap-btn {
+  background: black;
+  padding: 22px 60px;
+  border-radius: 15px;
+  border: none;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+a.trap-btn:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: auto;
+  right: -99px;
+  transform: translate(-50%, -50%);
+  width: 65px;
+  height: 65px;
+  display: block;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M27.8857 40.2479H48.2646' stroke='%23A3783F' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M38.7373 29.8651L48.3368 39.4646C48.7274 39.8552 48.7274 40.4883 48.3368 40.8789L38.7373 50.4784' stroke='%23A3783F' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='0.5' y='0.5' width='78.0508' height='79' rx='19.5' stroke='%23A3783F'/%3E%3C/svg%3E");
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  transition: 0.1s ease-in;
+}
+
+a.trap-btn:hover.trap-btn::before {
+  right: -110px;
+}
+
+a.trap-2-btn {
+  text-transform: uppercase;
+  background-color: var(--color-accent-gold);
+}
+
+a.trap-2-btn:before {
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M27.8857 40.2479H48.2646' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M38.7373 29.8651L48.3368 39.4646C48.7274 39.8552 48.7274 40.4883 48.3368 40.8789L38.7373 50.4784' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='0.5' y='0.5' width='78.0508' height='79' rx='19.5' stroke='%23ffffff'/%3E%3C/svg%3E");
+}
+
+main {
+  padding: 0px;
+  margin: 0px;
+}
+
+/*  ############################## global classes end ##################### */
+
+/*  ############################## Nav classes start ##################### */
+.trap-nav .nav-item .nav-link {
+  font-weight: 500;
+  font-size: 18px;
+  font-family: var(--font-content);
+}
+
+.trap-nav .Nav-Icons .users.search {
+  border: 1px solid var(--color-accent-gold);
+}
+
+.cart-Icon-on-mobile,
+.trap-nav .Nav-Icons .users {
+  background: transparent;
+  border: 1px solid var(--color-black);
+  padding: 7px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cart-Icon-on-mobile:hover,
+.trap-nav .Nav-Icons .users:hover {
+  background: var(--color-black);
+  box-shadow: 1px 1px 15px -6px #0000009c;
+  transition: 0.3s ease-in;
+  border-color: var(--color-black);
+}
+
+.cart-Icon-on-mobile:hover *,
+.trap-nav .Nav-Icons .users:hover * {
+  color: var(--color-border-light);
+  fill: var(--color-border-light);
+}
+
+h2 span,
+h4 span,
+h5 span,
+h3 span,
+h1 span {
+  color: var(--color-accent-gold);
+}
+
+.abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cart-Icon-on-mobile {
+  display: none;
+}
+
+.offcanvas.offcanvas-start.show {
+  backdrop-filter: blur(3px);
+  background: linear-gradient(45deg, var(--color-accent-gold) 40%, #ff864b 120%);
+}
+
+.offcanvas.offcanvas-start.show a {
+  color: #ffffff;
+}
+
+.offcanvas.offcanvas-start.show .Nav-Icons .users path,
+.offcanvas.offcanvas-start.show .Nav-Icons .users {
+  border-color: white;
+  fill: white;
+}
+
+/* ############################## Nav classes End ##################### */
+
+
+/* ##############################  Hero Section start  ##################### */
+.trap-hero {
+  border-radius: 50px;
+  margin: 0px 20px 20px 20px;
+}
+
+.trap-hero .hero-wrapper .content h1 {
+  font-size: 120px;
+  line-height: 110px;
+}
+
+.trap-hero .hero-wrapper .content p {
+  font-size: 25px;
+}
+
+.trap-hero .image {
+  right: 0;
+  transform: translate(-0%, -50%);
+}
+
+/* ##############################  Hero Section End  ##################### */
+
+/* ##############################  Collection Section End  ##################### */
+
+.trap-collection-box {
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 0px 0px 50px 50px;
+  color: var(--color-bg-light);
+}
+
+.trap-collection-box h2 {
+  font-size: 60px;
+}
+
+.trap-collection-box p {
+  margin: 0;
+  line-height: 5px;
+}
+
+/* ##############################  Collection Section End  ##################### */
+
+/* ##############################  Feature Product Section End  ##################### */
+section.trap-feature-product {
+  margin: 100px 0px 0px 0px;
+}
+
+section.trap-feature-product .container .content h2 {
+  font-size: 120px;
+  margin: 0;
+}
+
+section.trap-feature-product .product-card .product {
+  padding: 0;
+}
+
+section.trap-feature-product .product-card .price {
+  font-family: var(--font-content);
+  font-weight: 600;
+  color: var(--color-accent-gold);
+}
+
+section.trap-feature-product .product-card .verient-image {
+  width: 35%;
+}
+
+/* ##############################  Feature Product Section End  ##################### */
+
+/* ##############################  GRADIENT Heading Section Start  ##################### */
+section.gradient-heading .container h1 {
+  font-size: 490px;
+  background: linear-gradient(to bottom, var(--color-text-dark) -200%, #fff0 60%) !important;
+  -webkit-background-clip: text !important;
+  color: transparent;
+  font-weight: 900;
+}
+
+/* ##############################  GRADIENT Heading Section End  ##################### */
+
+/* ##############################  Streetwear Section End  ##################### */
+.home section.streetwear-section {
+  margin-bottom: -100px !important;
+  transform: translateY(-250px);
+}
+
+section.streetwear-section .content {
+  padding: 60px 40px !important;
+}
+
+section.streetwear-section h1 {
+  font-size: 100px;
+  line-height: 95px;
+}
+
+section.streetwear-section h2 {
+  font-size: 56px;
+}
+
+/* ##############################  Streetwear Section End  ##################### */
+
+/* ##############################  What Slider Section End  ##################### */
+section.what-slider {
+  margin-bottom: 120px !important;
+}
+
+.what-slider .container h2 {
+  font-size: 85px;
+  width: 65%;
+  line-height: 80px;
+}
+
+.what-slider .swiper {
+  width: 70%;
+  height: unset;
+  border-radius: 30px;
+}
+
+.what-slider .swiper-slide {
+  font-size: 40px;
+  background: #fdfdfd4f;
+  backdrop-filter: blur(15px);
+  padding: 40px 0px 20px 30px;
+}
+
+.what-slider .swiper-button-next svg,
+.what-slider .swiper-button-prev svg {
+  fill: none;
+}
+
+.what-slider .swiper-button-next,
+.what-slider .swiper-button-prev {
+  border: 1px solid white;
+  height: 70px;
+  width: 70px;
+  border-radius: 20px;
+  padding: 20px;
+  top: 0px !important;
+  position: relative !important;
+  display: block;
+  margin: 0 !important;
+}
+
+.what-slider .swiper-button-next,
+.what-slider .swiper-button-prev {
+  &.swiper-button-disabled {
+    background-color: var(--color-bg-light);
+    opacity: 1;
+  }
+}
+
+.what-slider .swiper-button-disabled svg path {
+  stroke: var(--color-black);
+  stroke-width: 3px;
+}
+
+.what-slider .swiper-slide h3 {
+  font-size: 56px;
+}
+
+.what-slider .swiper-slide p {
+  margin: 0;
+  font-size: 19px;
+}
+
+/* ##############################  What Slider Section End  ##################### */
+
+/* ##############################  why choose Section start  ##################### */
+section.why-choose-card h2 {
+  font-size: 130px;
+}
+
+section.why-choose-card .why-card {
+  background: var(--color-border-light);
+  min-height: 380px;
+  border-radius: 30px;
+  padding: 30px 10px 40px 30px;
+  transition-duration: 0.2s;
+}
+
+section.why-choose-card .why-card svg {
+  width: 50px;
+  height: 50px;
+}
+
+section.why-choose-card .why-card .content h3 {
+  font-size: 45px;
+  line-height: 45px;
+  color: var(--color-black);
+}
+
+section.why-choose-card .why-card .content p {
+  line-height: 20px;
+}
+
+section.why-choose-card .why-card:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+section.why-choose-card .why-card:hover h3 {
+  color: var(--color-white);
+
+}
+
+section.why-choose-card .why-card:hover svg path {
+  fill: var(--color-white);
+}
+
+/* ##############################  why choose Section End  ##################### */
+
+/* ##############################   Trap Customer Love  Start  ##################### */
+/* */
+.trap-customer-love {
+  padding: 80px 0;
+}
+
+.trap-customer-love .section-heading {
+  margin-bottom: 50px;
+  font-size: 130px;
+}
+
+.swiper.customerlove:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0),
+      #fff);
+}
+
+.swiper.customerlove:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(to left,
+      rgba(255, 255, 255, 0),
+      #fff);
+}
+
+.trap-customer-love .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.trap-customer-love .swiper-slide {
+  background: var(--color-border-light);
+  height: 100%;
+  border-radius: 30px;
+  padding: 10px 10px 40px 10px;
+  gap: 20px;
+}
+
+.trap-customer-love .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.trap-customer-love .swiper-slide .content h2 {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 30px;
+  margin: 0;
+}
+
+
+/* ##############################  Trap Customer Love  Section End  ##################### */
+
+/* ##############################  Footer Section start  ##################### */
+.site-footer {
+  background-color: #000;
+  color: #fff;
+  padding-top: 60px;
+  font-size: 0.95rem;
+}
+
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.site-footer a:hover {
+  opacity: 0.8;
+}
+
+.footer-logo {
+  max-width: 180px;
+  margin-bottom: 20px;
+}
+
+.newsletter-title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.newsletter-form {
+  max-width: 80%;
+  border: 1px solid #4d4d4d;
+  border-radius: 15px;
+  padding: 8px;
+  font-family: var(--font-label);
+}
+
+.newsletter-form .form-control:focus {
+  box-shadow: none;
+}
+
+.newsletter-form .form-control {
+  padding: 12px 20px;
+  border: none !important;
+}
+
+.newsletter-form .form-control::placeholder {
+  color: var(--color-bg-light);
+}
+
+.newsletter-form .btn {
+  background-color: var(--color-accent-gold);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+}
+
+.newsletter-form .btn:hover {
+  background-color: #c89a56;
+}
+
+.newsletter-note {
+  font-size: 12px;
+  color: var(--color-bg-light);
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.customersupport h5,
+.quick-links-wrapper h5 {
+  font-size: 40px;
+}
+
+.quick-links h5,
+.customer-support h5 {
+  margin-bottom: 20px;
+}
+
+.quick-links ul,
+.customer-support ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links li,
+.customer-support p {
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background-color: transparent;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 1.1rem;
+  border: 1px solid white;
+}
+
+
+.payment-icons img {
+  height: 45px;
+  margin-left: -80px;
+  opacity: 0.8;
+}
+
+.payment-icons img:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  margin-top: 40px;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.footer-bottom-links a {
+  color: #999;
+  margin: 0 10px;
+}
+
+.footer-bottom-links a:hover {
+  color: #fff;
+}
+
+.footerBottomHeading {
+  font-size: 420px;
+  background: linear-gradient(to bottom, #ffffff -120%, #fff0 70%) !important;
+  -webkit-background-clip: text !important;
+  color: transparent;
+  font-weight: 900;
+  transform: translateY(-35px);
+}
+
+/* ##############################  Footer Section End  ##################### */
+
+/*  ############################## Cta Footer classes Start ##################### */
+.ctaFootertop h2 {
+  font-size: 110px;
+
+}
+
+/*  ############################## Cta Footer classes End ##################### */
