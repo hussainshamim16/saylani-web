@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disciplined Developer - Daily Routine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            padding: 40px 44px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .header .subtitle {
+            font-size: 0.95rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            border-radius: 10px;
+            margin-bottom: 36px;
+            opacity: 0.5;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            transition: all 0.2s ease;
+            border-radius: 16px;
+            padding: 6px 12px 6px 0;
+        }
+
+        .timeline-item:hover {
+            background: #f8f9ff;
+        }
+
+        .time-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+            max-width: 160px;
+            background: #f4f6fb;
+            border-radius: 14px;
+            padding: 16px 14px;
+            text-align: center;
+            border: 1px solid #eef0f7;
+        }
+
+        .time {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .duration {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-top: 2px;
+            background: #ede9fe;
+            padding: 3px 10px;
+            border-radius: 100px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .icon-deep-work { background: #e0e7ff; color: #4338ca; }
+        .icon-spiritual { background: #fce7f3; color: #be185d; }
+        .icon-selfcare { background: #d1fae5; color: #065f46; }
+        .icon-commute { background: #fef3c7; color: #b45309; }
+        .icon-office { background: #dbeafe; color: #1e40af; }
+        .icon-travel { background: #f3e8ff; color: #7c3aed; }
+        .icon-english { background: #fee2e2; color: #b91c1c; }
+        .icon-sleep { background: #e0e7ff; color: #312e81; }
+
+        .activity-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1f2937;
+            letter-spacing: -0.01em;
+        }
+
+        .activity-detail {
+            font-size: 0.82rem;
+            color: #6b7280;
+            line-height: 1.5;
+            font-weight: 400;
+            margin-left: 42px;
+        }
+
+        .footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1.5px solid #f3f4f6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .footer .sleep-highlight {
+            background: #f0f4ff;
+            padding: 6px 14px;
+            border-radius: 100px;
+            color: #4338ca;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .time-block {
+                min-width: 110px;
+                max-width: 110px;
+                padding: 12px 8px;
+            }
+            .time {
+                font-size: 0.8rem;
+            }
+            .activity-detail {
+                margin-left: 0;
+                font-size: 0.75rem;
+            }
+            .activity-title {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .timeline-item:hover {
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="badge">Optimized Plan</div>
+            <h1>The "Disciplined Developer"</h1>
+            <p class="subtitle">Daily Routine · 24 Hours of Purpose</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+
+            <!-- 04:45 - 05:30 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">04:45 – 05:30</span>
+                    <span class="duration">45 min</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-spiritual">🌙</div>
+                        <span class="activity-title">Fajar & Spiritual Start</span>
+                    </div>
+                    <p class="activity-detail">Uth kar Tahajjud/Fajar ada karein. Isse aapka din jaldi shuru hoga aur kaza ka masla hal ho jayega.</p>
+                </div>
+            </div>
+
+            <!-- 05:30 - 07:00 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">05:30 – 07:00</span>
+                    <span class="duration">1.5 hrs</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-deep-work">🐍</div>
+                        <span class="activity-title">Deep Work (Python)</span>
+                    </div>
+                    <p class="activity-detail">CodeWithHarry ki 1-2 videos dekhein aur foran code practice karein. Subha ka waqt focus ke liye best hai.</p>
+                </div>
+            </div>
+
+            <!-- 07:00 - 08:30 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">07:00 – 08:30</span>
+                    <span class="duration">1.5 hrs</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-selfcare">🏡</div>
+                        <span class="activity-title">Self-Care & Family</span>
+                    </div>
+                    <p class="activity-detail">Nashta karein, Ami ke sath waqt guzaraein aur office ke liye tayar hon.</p>
+                </div>
+            </div>
+
+            <!-- 08:30 - 10:00 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">08:30 – 10:00</span>
+                    <span class="duration">1.5 hrs</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-commute">🚆</div>
+                        <span class="activity-title">Commute Learning</span>
+                    </div>
+                    <p class="activity-detail">Safar ke 1 ghante mein koi Data Science ya AI ka podcast sunein ya notes revise karein.</p>
+                </div>
+            </div>
+
+            <!-- 10:00 - 20:00 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">10:00 – 20:00</span>
+                    <span class="duration">10 hrs</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-office">💼</div>
+                        <span class="activity-title">Office Hours</span>
+                    </div>
+                    <p class="activity-detail">Apni job par focus karein. Break mein agar 15 mins milein toh Python ka koi purana concept recall kar lein.</p>
+                </div>
+            </div>
+
+            <!-- 20:00 - 22:00 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">20:00 – 22:00</span>
+                    <span class="duration">2 hrs</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-travel">🎧</div>
+                        <span class="activity-title">Travel & Decompress</span>
+                    </div>
+                    <p class="activity-detail">Safar mein thora relax karein, music sunein ya din bhar ka kaam zehen mein analyze karein.</p>
+                </div>
+            </div>
+
+            <!-- 22:00 - 23:00 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">22:00 – 23:00</span>
+                    <span class="duration">1 hr</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-english">🗣️</div>
+                        <span class="activity-title">English & Speaking</span>
+                    </div>
+                    <p class="activity-detail">Khana khane ke baad English practice karein. Ye light activity hai, neend mein bhi ho sakti hai.</p>
+                </div>
+            </div>
+
+            <!-- 23:00 - 04:45 -->
+            <div class="timeline-item">
+                <div class="time-block">
+                    <span class="time">23:00 – 04:45</span>
+                    <span class="duration">5.75 hrs</span>
+                </div>
+                <div class="content">
+                    <div class="activity-header">
+                        <div class="icon-circle icon-sleep">😴</div>
+                        <span class="activity-title">Deep Sleep</span>
+                    </div>
+                    <p class="activity-detail">5-6 ghante ki pur-sukoon neend laazmi hai taake subha dobara fresh uth sakein.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>✨ Stay consistent. Progress daily.</span>
+            <span class="sleep-highlight">Total Sleep: ~5h 45m</span>
+        </div>
+    </div>
+</body>
+</html>
